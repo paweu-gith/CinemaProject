@@ -10,7 +10,6 @@ public class CinemaProjectApplication {
 	public static void main(String[] args) {
 		
 		SpringApplication.run(CinemaProjectApplication.class, args);
-		
 	}
 	
 }
