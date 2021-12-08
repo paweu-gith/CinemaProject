@@ -176,6 +176,7 @@ public class EmailController {
 				return new PasswordAuthentication("98855@stud.uz.zgora.pl", "45.Wojna");
 			}
 		});
+		
 		Message msg = new MimeMessage(session);
 		msg.setFrom(new InternetAddress("noreply@kino.com", false));
 
