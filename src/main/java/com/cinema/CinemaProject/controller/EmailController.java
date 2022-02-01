@@ -83,6 +83,9 @@ public class EmailController {
 	   
 		sendmail(data.get(0).getOrder().getUser().getEmail(), fileName, data.get(0));
 		
+		File myObj = new File("C:\\Users\\abc\\eclipse-workspace\\CinemaProject\\"+fileName); 
+		myObj.delete();
+		
 		return "Email sent successfully";
 	}
 	
