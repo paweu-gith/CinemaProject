@@ -3,6 +3,7 @@ package com.cinema.CinemaProject.model;
 
 import javax.persistence.*;
 
+
 @Entity
 @Table(name = "images")
 public class Image {
@@ -15,8 +16,7 @@ public class Image {
 	@Column(name = "name")
 	private String name;
 	
-    @OneToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "movie_id", referencedColumnName = "id")
+    @OneToOne(mappedBy = "image")
     private Movie movie;
     
 	@Column(name = "picByte", length = 1000)
@@ -56,6 +56,9 @@ public class Image {
 	}
 	public Movie getMovie() {
 		return movie;
+	}
+	public void setMovie(Movie movie) {
+		this.movie = movie;
 	}
 	public void setPicByte(byte[] picByte) {
 		this.picByte = picByte;

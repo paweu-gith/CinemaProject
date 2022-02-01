@@ -33,6 +33,8 @@ public class OrderedSeat {
     @Column(columnDefinition= "char(64)")
     private String idHash;
     
+    private boolean isValidated = false;
+    
 	public OrderedSeat(Long id,Screening screening, Seat seat, Order order) {
 		super();
 		this.screening = screening;
@@ -93,6 +95,14 @@ public class OrderedSeat {
 
 	public void setIdHash(String idHash) {
 		this.idHash = idHash;
+	}
+
+	public boolean isValidated() {
+		return isValidated;
+	}
+
+	public void setValidated(boolean isValidated) {
+		this.isValidated = isValidated;
 	}
 
 	@Override

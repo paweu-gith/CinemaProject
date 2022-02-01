@@ -23,6 +23,10 @@ public class OrderedSeatService {
 	public Optional<OrderedSeat> findById(Long id) {
 		return orderedSeatRepository.findById(id);
 	}
+	public Optional<OrderedSeat> findByIdHash(String id) {
+		return orderedSeatRepository.findByIdHash(id);
+	}
+	
 	
 	public List<OrderedSeat> findAll() {
 		return orderedSeatRepository.findAll();

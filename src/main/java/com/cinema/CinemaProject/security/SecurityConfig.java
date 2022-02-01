@@ -16,8 +16,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import com.cinema.CinemaProject.service.UserDetailsServiceImpl;
 
-
-
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(

@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -22,15 +24,43 @@ public class Movie {
 	private Long id;
 	
 	private String title;
+	
+    @Lob
+    private String description;
+    
 	private Double ticketPrice;
 	
-    @OneToMany(mappedBy="movie", cascade=CascadeType.ALL, orphanRemoval=true)
+    @OneToMany(mappedBy="movie", cascade=CascadeType.ALL)
     @JsonIgnore
     private Set<Screening> screening;
     
-    @OneToOne(mappedBy = "movie")
+    @JoinColumn(name="image_id", referencedColumnName = "id")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JsonIgnore
     private Image image;
     
+    
+	public Movie(Long id, String title, String description, Double ticketPrice, Set<Screening> screening, Image image) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.description = description;
+		this.ticketPrice = ticketPrice;
+		this.screening = screening;
+		this.image = image;
+	}
+	
+	public Movie(Long id, String title, String description, Double ticketPrice) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.description = description;
+		this.ticketPrice = ticketPrice;
+	}
+	
+	public Movie() {
+
+	}
 	public Long getId() {
 		return id;
 	}
@@ -48,6 +78,30 @@ public class Movie {
 	}
 	public void setTicketPrice(Double ticketPrice) {
 		this.ticketPrice = ticketPrice;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Image getImage() {
+		return image;
+	}
+
+	public void setImage(Image image) {
+		this.image = image;
+	}
+
+	public Set<Screening> getScreening() {
+		return screening;
+	}
+
+	public void setScreening(Set<Screening> screening) {
+		this.screening = screening;
 	}
 	
 

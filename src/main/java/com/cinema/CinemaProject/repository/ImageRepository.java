@@ -9,4 +9,6 @@ import com.cinema.CinemaProject.model.Image;
 public interface ImageRepository extends JpaRepository<Image, Long> {
 	Optional<Image> findByName(String name);
 	
+	Optional<Image> findByMovie_Id(Long id);
+	
 }

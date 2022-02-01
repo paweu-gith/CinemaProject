@@ -75,15 +75,13 @@ public class EmailController {
 		document.open();
 		
 		for(OrderedSeat x : data ) {
+
 			addTicket(document, x);
 		}
 
 		document.close();
 	   
 		sendmail(data.get(0).getOrder().getUser().getEmail(), fileName, data.get(0));
-		
-		File myObj = new File("C:\\Users\\abc\\eclipse-workspace\\CinemaProject\\"+fileName); 
-		myObj.delete();
 		
 		return "Email sent successfully";
 	}
@@ -93,8 +91,10 @@ public class EmailController {
 				BaseFont.NOT_EMBEDDED);
 		Font normalFont = new Font(polishFont, 12, Font.NORMAL);
 		
-		com.cinema.CinemaProject.model.Image image = imageController.getImage(ticket.getScreening().getMovie().getId());
+		com.cinema.CinemaProject.model.Image image = imageController.getImageByMovie(ticket.getScreening().getMovie().getId());
+		System.out.println(image.getPicByte());
 		Image poster = Image.getInstance(image.getPicByte());
+		poster.scaleToFit(110, 160);
 		
 		BarcodeQRCode code = new BarcodeQRCode(ticket.getIdHash(), 90, 90, null);
 		Image qrImage = code.getImage();
@@ -128,7 +128,6 @@ public class EmailController {
 		table.addCell("Data: "+ ticket.getScreening().getDate());
 		table.addCell("Nazwa sali kinowej: "+ ticket.getSeat().getHall().getHallName());
 		table.addCell(new Phrase("Numer rzędu: "+ ticket.getSeat().getRow(), normalFont));
-		table.addCell("Numer kolumny: "+ ticket.getSeat().getColumn());
 		table.addCell("Numer miejsca: "+ ticket.getSeat().getSeatNumber());
 		table.addCell("Cena za bilety: "+ (ticket.getScreening().getMovie().getTicketPrice()));
 		

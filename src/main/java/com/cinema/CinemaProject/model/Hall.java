@@ -37,6 +37,12 @@ public class Hall {
 		this.screening = screening;
 		this.seat = seat;
 	}
+	public Hall(Long id, String hallName) {
+		super();
+		this.id = id;
+		this.hallName = hallName;
+	}
+	
 	public Hall() {
 
 	}
