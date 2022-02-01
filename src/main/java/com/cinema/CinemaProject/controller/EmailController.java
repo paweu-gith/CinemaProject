@@ -83,7 +83,7 @@ public class EmailController {
 	   
 		sendmail(data.get(0).getOrder().getUser().getEmail(), fileName, data.get(0));
 		
-		File myObj = new File("C:\\Users\\abc\\eclipse-workspace\\CinemaProject\\"+fileName); 
+		File myObj = new File(fileName); 
 		myObj.delete();
 		
 		return "Email sent successfully";
@@ -199,7 +199,7 @@ public class EmailController {
 	   
 		MimeBodyPart attachPart = new MimeBodyPart();
 
-		attachPart.attachFile("C:\\Users\\abc\\eclipse-workspace\\CinemaProject\\"+fileName);
+		attachPart.attachFile(fileName);
 		multipart.addBodyPart(attachPart);
 	   
 		msg.setContent(multipart);
