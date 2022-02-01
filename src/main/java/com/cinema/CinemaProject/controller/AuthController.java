@@ -83,9 +83,9 @@ public class AuthController {
 							 signUpRequest.get("surname"),
 							 signUpRequest.get("email"),
 							 encoder.encode(signUpRequest.get("password")));
-		
-		Set<String> strRoles = Set.of(signUpRequest.get("roles").split(", "));
-
+		String tempString = signUpRequest.get("roles");
+		Set<String> strRoles = Set.of(tempString.split(", "));
+		System.out.println(strRoles);
 		Set<Role> roles = new HashSet<>();
 
 		if (strRoles == null) {
