@@ -75,7 +75,7 @@ public class AuthController {
 		if (userService.existsByEmail(signUpRequest.get("email"))) {
 			return ResponseEntity
 					.badRequest()
-					.body("Error: Email is already in use!");
+					.body("Podany adres e-mail jest już zajęty");
 		}
 
 		// Create new user's account
