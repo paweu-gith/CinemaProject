@@ -170,12 +170,12 @@ public class EmailController {
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");
 		props.put("mail.smtp.starttls.enable", "true");
-		props.put("mail.smtp.host", "poczta.stud.uz.zgora.pl");
+		props.put("mail.smtp.host", "smtp.gmail.com");
 		props.put("mail.smtp.port", "587");
 	   
 		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication("98855@stud.uz.zgora.pl", "45.Wojna");
+				return new PasswordAuthentication("dawid3a2@gmail.com", "Pawel199816");
 			}
 		});
 		
